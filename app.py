@@ -40,6 +40,3 @@ def home():
             "divide": "/divide/<number1>/<number2>"
         }
     )
-
-if __name__ == '__main__':
-    app.run()
