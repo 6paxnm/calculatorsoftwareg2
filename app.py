@@ -9,17 +9,17 @@ def not_found(error):
 @app.route('/add/<float:numberA>/<float:numberB>', methods=['GET'])
 def add(numberA, numberB):
     result = numberA + numberB
-    return jsonify(status=200,result=result)
+    return jsonify(status=200, result=result)
 
 @app.route('/minus/<float:numberA>/<float:numberB>', methods=['GET'])
 def minus(numberA, numberB):
     result = numberA - numberB
-    return jsonify(status=200,result=result)
+    return jsonify(status=200, result=result)
 
 @app.route('/multiply/<float:numberA>/<float:numberB>', methods=['GET'])
 def multiply(numberA, numberB):
     result = numberA * numberB
-    return jsonify(status=200,result=result)
+    return jsonify(status=200, result=result)
 
 @app.route('/divide/<float:numberA>/<float:numberB>', methods=['GET'])
 def divide(numberA, numberB):
@@ -28,6 +28,18 @@ def divide(numberA, numberB):
     result = numberA / numberB
     return jsonify(status=200, result=result)
 
+@app.route('/')
+def home():
+    return jsonify(
+        status=200,
+        message="Calculator API is running",
+        endpoints={
+            "add": "/add/<number1>/<number2>",
+            "subtract": "/minus/<number1>/<number2>",
+            "multiply": "/multiply/<number1>/<number2>",
+            "divide": "/divide/<number1>/<number2>"
+        }
+    )
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
